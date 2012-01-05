@@ -1,4 +1,4 @@
-# Localized Fields
+# Localized Fields [![Build Status](https://secure.travis-ci.org/tiagogodinho/localized_fields.png)](http://travis-ci.org/tiagogodinho/localized_fields)
 
 Helps you to create forms with localized fields using Mongoid.
 
