@@ -9,6 +9,7 @@ Gem::Specification.new do |gem|
   gem.homepage      = ""
   
   gem.add_dependency 'mongoid', '>= 2.4.0'
+  gem.add_dependency 'actionpack', '>= 3.1.0'
   
   gem.add_development_dependency 'rspec'
 
