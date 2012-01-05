@@ -7,6 +7,8 @@ Gem::Specification.new do |gem|
   gem.description   = %q{Helps you to create forms with localized fields using Mongoid.}
   gem.summary       = %q{Localized Fields provides form helpers to create forms with localized fields using Mongoid.}
   gem.homepage      = ""
+  
+  gem.add_development_dependency 'rspec'
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
