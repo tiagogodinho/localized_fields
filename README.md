@@ -2,17 +2,11 @@
 
 Helps you to create forms with localized fields using Mongoid.
 
-## Dependencies
-
-- rails >= 3.1
-- mongoid >= 2.4
-
 ## Installation
 
 Add this line to your application's Gemfile:
 
     gem 'localized_fields'
-    gem 'mongoid', git: 'git://github.com/tiagogodinho/mongoid.git', branch: 'validates_presence'
 
 And then execute:
 
@@ -71,6 +65,11 @@ end
 <% end %>
 ```
 
+## Dependencies
+
+- rails >= 3.1
+- mongoid >= 2.4
+
 ## Compatibility
 
 Localized Fiedls is tested against Ruby 1.8.7, 1.9.2, 1.9.3, REE and Rubinius.
@@ -82,3 +81,7 @@ Localized Fiedls is tested against Ruby 1.8.7, 1.9.2, 1.9.3, REE and Rubinius.
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## License
+
+MIT License. Copyright 2012 Tiago Rafael Godinho
