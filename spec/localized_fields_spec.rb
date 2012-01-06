@@ -120,5 +120,36 @@ describe 'LocalizedFields' do
       
       output.should eq(expected)
     end
+    
+    context 'post with values' do
+      before do
+        @post = Post.new
+        @post.stub(:title_translations).and_return({ 'en' => 'title en', 'pt' => 'title pt' })
+        @template = ActionView::Base.new
+        @template.output_buffer = ''
+        @builder = ActionView::Helpers::FormBuilder.new(:post, @post, @template, {}, proc {})
+      end
+      
+      it 'should return a text_area tag for en' do
+        output = @builder.localized_fields(:title) do |localized_field|
+          localized_field.text_area :en
+        end
+        
+        expected = '<textarea cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20">title en</textarea>'
+        
+        output.should eq(expected)
+      end
+      
+      it 'should return a text_area tag for all languages' do
+        output = @builder.localized_fields do |localized_field|
+          localized_field.text_area :title
+        end
+        
+        expected = '<textarea cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20">title en</textarea>' +
+                   '<textarea cols="40" id="post_title_translations_pt" name="post[title_translations][pt]" rows="20">title pt</textarea>'
+        
+        output.should eq(expected)
+      end
+    end
   end
 end

@@ -34,9 +34,15 @@ module LocalizedFields
       if @options.has_key?(:language)
         language = @options[:language]
         
-        super(attribute, :id => "#{object_name}_#{attribute}_translations_#{language}", :name => "#{object_name}[#{attribute}_translations][#{language}]").html_safe
+        translations = @object.send("#{attribute}_translations") || {}
+        
+        value = translations.has_key?(language.to_s) ? translations[language.to_s] : nil
+        
+        super(attribute, :value => value, :id => "#{object_name}_#{attribute}_translations_#{language}", :name => "#{object_name}[#{attribute}_translations][#{language}]").html_safe
       else
-        super(attribute, options).html_safe
+        value = @object ? @object[attribute.to_s] : nil
+        
+        super(attribute, options.merge(:value => value)).html_safe
       end
     end
   end
