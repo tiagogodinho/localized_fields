@@ -67,4 +67,4 @@ PLATFORMS
 DEPENDENCIES
   localized_fields!
   rake
-  rspec
+  rspec (~> 2.8.0)
