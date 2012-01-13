@@ -1,4 +1,4 @@
-# Localized Fields [![Build Status](https://secure.travis-ci.org/tiagogodinho/localized_fields.png)](http://travis-ci.org/tiagogodinho/localized_fields) [![Build Status](https://gemnasium.com/tiagogodinho/localized_fields.png?travis)](http://gemnasium.com/tiagogodinho/localized_fields)
+# Mongoid::Textile [![Build Status](https://secure.travis-ci.org/tiagogodinho/mongoid-textile.png)](http://travis-ci.org/tiagogodinho/mongoid-textile) [![Build Status](https://gemnasium.com/tiagogodinho/mongoid-textile.png?travis)](http://gemnasium.com/tiagogodinho/mongoid-textile)
 
 Helps you to create forms with localized fields using Mongoid.
 
