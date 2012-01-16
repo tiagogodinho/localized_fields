@@ -53,6 +53,18 @@ describe 'LocalizedFields' do
     end
   end
   
+  describe 'language' do
+    it 'should return the language' do
+      output = @builder.localized_fields do |localized_field|
+        "<h2>#{localized_field.language}</h2>".html_safe
+      end
+      
+      expected = '<h2>en</h2><h2>pt</h2>'
+      
+      output.should eq(expected)
+    end
+  end
+  
   describe 'label' do
     it 'should return a label tag for en' do
       output = @builder.localized_fields(:title) do |localized_field|
