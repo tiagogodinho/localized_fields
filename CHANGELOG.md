@@ -1,3 +1,9 @@
+## 0.1.0 (2012-01-15)
+
+### Improvements
+
+* Adding support to options on helpers.
+
 ## 0.0.2 (2012-01-06)
 
 ### Bug fixes
