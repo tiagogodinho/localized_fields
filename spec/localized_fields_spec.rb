@@ -86,6 +86,17 @@ describe 'LocalizedFields' do
       
       output.should eq(expected)
     end
+    
+    it 'should return label tags with options' do
+      output = @builder.localized_fields do |localized_field|
+        localized_field.label :title, :class => 'field'
+      end
+      
+      expected = '<label class="field" for="post_title_translations_en">Title</label>' +
+                 '<label class="field" for="post_title_translations_pt">Title</label>'
+      
+      output.should eq(expected)
+    end
   end
   
   describe 'text_field' do
@@ -109,6 +120,17 @@ describe 'LocalizedFields' do
       
       output.should eq(expected)
     end
+    
+    it 'should return text_field tags with options' do
+      output = @builder.localized_fields do |localized_field|
+        localized_field.text_field :title, :class => 'field'
+      end
+      
+      expected = '<input class="field" id="post_title_translations_en" name="post[title_translations][en]" size="30" type="text" />' +
+                 '<input class="field" id="post_title_translations_pt" name="post[title_translations][pt]" size="30" type="text" />'
+      
+      output.should eq(expected)
+    end
   end
   
   describe 'text_area' do
@@ -129,6 +151,17 @@ describe 'LocalizedFields' do
       
       expected = '<textarea cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20"></textarea>' +
                  '<textarea cols="40" id="post_title_translations_pt" name="post[title_translations][pt]" rows="20"></textarea>'
+      
+      output.should eq(expected)
+    end
+    
+    it 'should return text_area tags with options' do
+      output = @builder.localized_fields do |localized_field|
+        localized_field.text_area :title, :class => 'field'
+      end
+      
+      expected = '<textarea class="field" cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20"></textarea>' +
+                 '<textarea class="field" cols="40" id="post_title_translations_pt" name="post[title_translations][pt]" rows="20"></textarea>'
       
       output.should eq(expected)
     end
