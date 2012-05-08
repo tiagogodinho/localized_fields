@@ -136,10 +136,11 @@ describe 'LocalizedFields' do
   describe 'text_area' do
     it 'should return a text_area tag for en' do
       output = @builder.localized_fields(:title) do |localized_field|
-        localized_field.text_area :en
+        localized_field.text_area :en, :value => "text"
       end
       
-      expected = '<textarea cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20"></textarea>'
+      expected =  %{<textarea cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20">\n}
+      expected << %{</textarea>}
       
       output.should eq(expected)
     end
@@ -149,8 +150,10 @@ describe 'LocalizedFields' do
         localized_field.text_area :title
       end
       
-      expected = '<textarea cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20"></textarea>' +
-                 '<textarea cols="40" id="post_title_translations_pt" name="post[title_translations][pt]" rows="20"></textarea>'
+      expected =  %{<textarea cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20">\n}
+      expected << %{</textarea>}
+      expected << %{<textarea cols="40" id="post_title_translations_pt" name="post[title_translations][pt]" rows="20">\n}
+      expected << %{</textarea>}
       
       output.should eq(expected)
     end
@@ -159,10 +162,12 @@ describe 'LocalizedFields' do
       output = @builder.localized_fields do |localized_field|
         localized_field.text_area :title, :class => 'field'
       end
-      
-      expected = '<textarea class="field" cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20"></textarea>' +
-                 '<textarea class="field" cols="40" id="post_title_translations_pt" name="post[title_translations][pt]" rows="20"></textarea>'
-      
+
+      expected =  %{<textarea class="field" cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20">\n}
+      expected << %{</textarea>}
+      expected << %{<textarea class="field" cols="40" id="post_title_translations_pt" name="post[title_translations][pt]" rows="20">\n}
+      expected << %{</textarea>}
+
       output.should eq(expected)
     end
     
@@ -180,7 +185,8 @@ describe 'LocalizedFields' do
           localized_field.text_area :en
         end
         
-        expected = '<textarea cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20">title en</textarea>'
+        expected =  %{<textarea cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20">\ntitle en}
+        expected << %{</textarea>}
         
         output.should eq(expected)
       end
@@ -189,9 +195,11 @@ describe 'LocalizedFields' do
         output = @builder.localized_fields do |localized_field|
           localized_field.text_area :title
         end
-        
-        expected = '<textarea cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20">title en</textarea>' +
-                   '<textarea cols="40" id="post_title_translations_pt" name="post[title_translations][pt]" rows="20">title pt</textarea>'
+
+        expected =  %{<textarea cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20">\ntitle en}
+        expected << %{</textarea>}
+        expected << %{<textarea cols="40" id="post_title_translations_pt" name="post[title_translations][pt]" rows="20">\ntitle pt}
+        expected << %{</textarea>}        
         
         output.should eq(expected)
       end
