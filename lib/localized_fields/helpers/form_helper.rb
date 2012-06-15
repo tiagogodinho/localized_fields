@@ -4,7 +4,7 @@ module LocalizedFields
       def localized_fields(field = nil, options = {}, &block)
         if field
           field_name = "#{field}_translations"
-          object = @object.send(field_name)
+          object = @object.send(field_name).try(:empty?) ? nil : @object.send(field_name)
           name = "#{object_name}[#{field_name}]"
         
           @template.fields_for(name, object, options.merge(:builder => LocalizedFields::FormBuilder), &block).html_safe
