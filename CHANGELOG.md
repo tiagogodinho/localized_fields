@@ -1,15 +1,25 @@
-## 0.1.0 (2012-01-15)
+## 0.2.0 - June 15, 2012
+
+### Improvements
+
+* Adding support to Mongoid 3.
+
+### Major Changes (Backwards Incompatible)
+
+* LocalizedFields no longer supports Ruby 1.8.7.
+
+## 0.1.0 - January 15, 2012
 
 ### Improvements
 
 * Adding support to options on helpers.
 
-## 0.0.2 (2012-01-06)
+## 0.0.2 - January 06, 2012
 
 ### Bug fixes
 
 * The value of the textarea fields were not displayed.
 
-## 0.0.1 (2012-01-05)
+## 0.0.1 - January 05, 2012
 
 Initial release.
