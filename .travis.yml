@@ -4,3 +4,7 @@ rvm:
   - 1.9.3
   - ruby-head
   - ree
+
+gemfile:
+  - gemfiles/mongoid-2.4.gemfile
+  - gemfiles/mongoid-3.0.gemfile
