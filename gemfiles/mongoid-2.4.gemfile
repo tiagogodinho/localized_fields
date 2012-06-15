@@ -3,4 +3,6 @@ source 'https://rubygems.org'
 gem 'mongoid',  '~> 2.4.0'
 gem 'bson_ext', '~> 1.6.1'
 
+gem 'localized_fields', :path => '../'
+
 gemspec :path => '../'
