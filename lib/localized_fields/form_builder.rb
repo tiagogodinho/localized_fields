@@ -16,23 +16,20 @@ module LocalizedFields
     end
     
     def text_field(attribute, options = {})
-      if @options.has_key?(:language)
-        language = @options[:language]
-        
-        translations = @object.send("#{attribute}_translations") || {}
-        
-        value = translations.has_key?(language.to_s) ? translations[language.to_s] : nil
-        
-        options = options.merge(:value => value, :id => "#{object_name}_#{attribute}_translations_#{language}", :name => "#{object_name}[#{attribute}_translations][#{language}]")
-      else
-        value = @object ? @object[attribute.to_s] : nil
-        options = options.merge(:value => value)
-      end
-      
+      attribute, options = create_field(attribute, options)
+
       super(attribute, options).html_safe
     end
     
     def text_area(attribute, options = {})
+      attribute, options = create_field(attribute, options)
+
+      super(attribute, options).html_safe
+    end
+
+    private
+
+    def create_field(attribute, options)
       if @options.has_key?(:language)
         language = @options[:language]
         
@@ -47,7 +44,7 @@ module LocalizedFields
         options = options.merge(:value => value)
       end
       
-      super(attribute, options).html_safe
+      return attribute, options
     end
   end
 end
