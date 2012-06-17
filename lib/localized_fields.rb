@@ -5,7 +5,7 @@ require 'action_view'
 
 module LocalizedFields
   extend ActiveSupport::Autoload
-  
+
   autoload :FormBuilder
   autoload :Helpers
 end
