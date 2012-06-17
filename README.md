@@ -1,4 +1,4 @@
-# Localized Fields [![Build Status](https://secure.travis-ci.org/tiagogodinho/localized_fields.png)](http://travis-ci.org/tiagogodinho/localized_fields) [![Build Status](https://gemnasium.com/tiagogodinho/localized_fields.png?travis)](http://gemnasium.com/tiagogodinho/localized_fields) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/tiagogodinho/localized_fields)
+# Localized Fields [![Build Status](https://secure.travis-ci.org/tiagogodinho/localized_fields.png)](http://travis-ci.org/tiagogodinho/localized_fields) [![Build Status](https://gemnasium.com/tiagogodinho/localized_fields.png)](http://gemnasium.com/tiagogodinho/localized_fields) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/tiagogodinho/localized_fields)
 
 Helps you to create forms with localized fields using Mongoid.
 
