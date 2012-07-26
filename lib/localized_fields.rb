@@ -1,5 +1,3 @@
-require "localized_fields/version"
-
 require 'mongoid'
 require 'action_view'
 

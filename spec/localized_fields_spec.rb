@@ -136,7 +136,7 @@ describe 'LocalizedFields' do
   describe 'text_area' do
     it 'should return a text_area tag for en' do
       output = @builder.localized_fields(:title) do |localized_field|
-        localized_field.text_area :en, value: "text"
+        localized_field.text_area :en, value: 'text'
       end
 
       expected =  %{<textarea cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20">\n}
