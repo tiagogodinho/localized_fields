@@ -2,4 +2,5 @@ rvm:
   - 1.9.3
 
 gemfile:
+  - Gemfile
   - gemfiles/mongoid-2.4.gemfile
