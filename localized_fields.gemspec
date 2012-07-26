@@ -7,10 +7,10 @@ Gem::Specification.new do |gem|
   gem.description   = %q{Helps you to create forms with localized fields using Mongoid.}
   gem.summary       = %q{Localized Fields provides form helpers to create forms with localized fields using Mongoid.}
   gem.homepage      = ""
-  
+
   gem.add_dependency 'mongoid',    '>= 2.4'
   gem.add_dependency 'actionpack', '~> 3.1'
-  
+
   gem.add_development_dependency 'rake',  '~> 0.9.2'
   gem.add_development_dependency 'rspec', '~> 2.8'
 
