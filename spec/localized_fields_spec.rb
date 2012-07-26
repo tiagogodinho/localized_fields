@@ -89,7 +89,7 @@ describe 'LocalizedFields' do
 
     it 'should return label tags with options' do
       output = @builder.localized_fields do |localized_field|
-        localized_field.label :title, :class => 'field'
+        localized_field.label :title, class: 'field'
       end
 
       expected = '<label class="field" for="post_title_translations_en">Title</label>' +
@@ -123,7 +123,7 @@ describe 'LocalizedFields' do
 
     it 'should return text_field tags with options' do
       output = @builder.localized_fields do |localized_field|
-        localized_field.text_field :title, :class => 'field'
+        localized_field.text_field :title, class: 'field'
       end
 
       expected = '<input class="field" id="post_title_translations_en" name="post[title_translations][en]" size="30" type="text" />' +
@@ -136,7 +136,7 @@ describe 'LocalizedFields' do
   describe 'text_area' do
     it 'should return a text_area tag for en' do
       output = @builder.localized_fields(:title) do |localized_field|
-        localized_field.text_area :en, :value => "text"
+        localized_field.text_area :en, value: "text"
       end
 
       expected =  %{<textarea cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20">\n}
@@ -160,7 +160,7 @@ describe 'LocalizedFields' do
 
     it 'should return text_area tags with options' do
       output = @builder.localized_fields do |localized_field|
-        localized_field.text_area :title, :class => 'field'
+        localized_field.text_area :title, class: 'field'
       end
 
       expected =  %{<textarea class="field" cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20">\n}

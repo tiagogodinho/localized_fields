@@ -7,4 +7,4 @@ gem 'rake'
 
 gem 'localized_fields', :path => '../'
 
-gemspec :path => '../'
+gemspec path: '../'

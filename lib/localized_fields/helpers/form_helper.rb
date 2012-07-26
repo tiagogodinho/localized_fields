@@ -7,12 +7,12 @@ module LocalizedFields
           object = @object.send(field_name).try(:empty?) ? nil : @object.send(field_name)
           name = "#{object_name}[#{field_name}]"
 
-          @template.fields_for(name, object, options.merge(:builder => LocalizedFields::FormBuilder), &block).html_safe
+          @template.fields_for(name, object, options.merge(builder: LocalizedFields::FormBuilder), &block).html_safe
         else
           output = ''
 
           I18n.available_locales.each do |language|
-            output << @template.fields_for(object_name, @object, options.merge(:builder => LocalizedFields::FormBuilder, :language => language), &block)
+            output << @template.fields_for(object_name, @object, options.merge(builder: LocalizedFields::FormBuilder, language: language), &block)
           end
 
           output.html_safe

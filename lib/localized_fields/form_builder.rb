@@ -8,7 +8,7 @@ module LocalizedFields
       if @options.has_key?(:language)
         language = @options[:language]
 
-        super(attribute, options.merge(:for => "#{object_name}_#{attribute}_translations_#{language}")).html_safe
+        super(attribute, options.merge(for: "#{object_name}_#{attribute}_translations_#{language}")).html_safe
       else
         field_name = @object_name.match(/.*\[(.*)_translations\]/)[1].capitalize
         super(attribute, field_name, options).html_safe
@@ -37,11 +37,11 @@ module LocalizedFields
 
         value = translations.has_key?(language.to_s) ? translations[language.to_s] : nil
 
-        options = options.merge(:value => value, :id => "#{object_name}_#{attribute}_translations_#{language}", :name => "#{object_name}[#{attribute}_translations][#{language}]")
+        options = options.merge(value: value, id: "#{object_name}_#{attribute}_translations_#{language}", name: "#{object_name}[#{attribute}_translations][#{language}]")
       else
         value = @object ? @object[attribute.to_s] : nil
 
-        options = options.merge(:value => value)
+        options = options.merge(value: value)
       end
 
       return attribute, options
