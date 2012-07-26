@@ -72,7 +72,7 @@ end
 
 ## Compatibility
 
-Localized Fiedls is tested against Ruby 1.9.2, 1.9.3 and ruby-head.
+Localized Fields is tested against Ruby 1.9.3.
 
 ## Contributing
 
