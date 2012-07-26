@@ -1,10 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'mongoid',  '~> 2.4.0'
-gem 'bson_ext', '~> 1.6.1'
+gem 'mongoid', '~> 2.4.0'
 
-gem 'rake'
-
-gem 'localized_fields', :path => '../'
+gem 'bson_ext', '~> 1.6.0'
 
 gemspec path: '../'
