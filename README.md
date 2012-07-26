@@ -6,15 +6,21 @@ Helps you to create forms with localized fields using Mongoid.
 
 Add this line to your application's Gemfile:
 
-    gem 'localized_fields'
+``` ruby
+gem 'localized_fields'
+```
 
 And then execute:
 
-    $ bundle
+``` terminal
+bundle
+```
 
 Or install it yourself as:
 
-    $ gem install localized_fields
+``` terminal
+gem install localized_fields
+```
 
 ## Usage
 
