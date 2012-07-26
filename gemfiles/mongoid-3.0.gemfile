@@ -1,9 +1,0 @@
-source 'https://rubygems.org'
-
-gem 'mongoid', '~> 3.0.0.rc'
-
-gem 'rake'
-
-gem 'localized_fields', :path => '../'
-
-gemspec :path => '../'
