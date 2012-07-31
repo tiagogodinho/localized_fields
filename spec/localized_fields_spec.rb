@@ -76,6 +76,26 @@ describe 'LocalizedFields' do
       output.should eq(expected)
     end
 
+    it 'should return a label tag with custom text' do
+      output = @builder.localized_fields(:title) do |localized_field|
+        localized_field.label :en, "The title in english"
+      end
+
+      expected = '<label for="post_title_translations_en">The title in english</label>'
+
+      output.should eq(expected)
+    end
+
+    it 'should return a label tag with custom text and options' do
+      output = @builder.localized_fields(:title) do |localized_field|
+        localized_field.label :en, "The title in english", class: "field"
+      end
+
+      expected = '<label class="field" for="post_title_translations_en">The title in english</label>'
+
+      output.should eq(expected)
+    end
+
     it 'should return a label tag for all languages' do
       output = @builder.localized_fields do |localized_field|
         localized_field.label :title
