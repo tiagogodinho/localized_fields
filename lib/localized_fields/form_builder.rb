@@ -4,14 +4,15 @@ module LocalizedFields
       @options[:language] if @options[:language]
     end
 
-    def label(attribute, options = {})
+    def label(attribute, *args)
+      options = args.extract_options!
+      text = args[0]
       if @options.has_key?(:language)
         language = @options[:language]
-
-        super(attribute, options.merge(for: "#{object_name}_#{attribute}_translations_#{language}")).html_safe
+        super(attribute, text, options.merge(for: "#{object_name}_#{attribute}_translations_#{language}")).html_safe
       else
-        field_name = @object_name.match(/.*\[(.*)_translations\]/)[1].capitalize
-        super(attribute, field_name, options).html_safe
+        text ||= @object_name.match(/.*\[(.*)_translations\]/)[1].capitalize
+        super(attribute, text, options).html_safe
       end
     end
 
