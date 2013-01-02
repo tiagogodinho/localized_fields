@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'mongoid',    '>= 2.4'
   gem.add_dependency 'actionpack', '~> 3.1'
 
-  gem.add_development_dependency 'rake',  '~> 0.9.2'
+  gem.add_development_dependency 'rake',  '~> 0.9'
   gem.add_development_dependency 'rspec', '~> 2.8'
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
