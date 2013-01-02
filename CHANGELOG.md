@@ -1,3 +1,9 @@
+## Next Release
+
+### Improvements
+
+* Added ability to specify the label text. ([@xavier][]) commit: [7222f15][]
+
 ## 0.2.0 - June 15, 2012
 
 ### Improvements
@@ -23,3 +29,6 @@
 ## 0.0.1 - January 05, 2012
 
 Initial release.
+
+[7222f15]: https://github.com/tiagogodinho/localized_fields/commit/7222f155a3152ce2b3db938108bf473af52bf5d9
+[@xavier]: https://github.com/xavier
