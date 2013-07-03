@@ -36,11 +36,11 @@ module LocalizedFields
 
         translations = @object.send("#{attribute}_translations") || {}
 
-        value = translations.has_key?(language.to_s) ? translations[language.to_s] : nil
+        value = translations.has_key?(language.to_s) ? translations[language.to_s] : ""
 
         options = options.merge(value: value, id: "#{object_name}_#{attribute}_translations_#{language}", name: "#{object_name}[#{attribute}_translations][#{language}]")
       else
-        value = @object ? @object[attribute.to_s] : nil
+        value = @object ? @object[attribute.to_s] : ""
 
         options = options.merge(value: value)
       end
