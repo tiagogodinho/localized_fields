@@ -5,8 +5,8 @@ module LocalizedFields
     end
 
     def label(attribute, *args)
-      options = args.extract_options!
       text = args[0]
+      options = args.extract_options!
       if @options.has_key?(:language)
         language = @options[:language]
         super(attribute, text, options.merge(for: "#{object_name}_#{attribute}_translations_#{language}")).html_safe
