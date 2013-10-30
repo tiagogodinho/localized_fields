@@ -13,41 +13,42 @@ describe 'LocalizedFields' do
   context 'form helpers with html tags' do
     it 'returns html tags with label and text_field' do
       output = builder.localized_fields do |localized_field|
-        '<dl class="field">'.html_safe +
-          '<dt>'.html_safe + localized_field.label(:title).html_safe + '</dt>'.html_safe +
-          '<dd>'.html_safe + localized_field.text_field(:title).html_safe + '</dd>'.html_safe +
-        '</dl>'.html_safe
-      end.html_safe
+        html =  %{<dl class="field">}
+        html <<  %{<dt>#{localized_field.label(:title)}</dt>}
+        html <<  %{<dd>#{localized_field.text_field(:title)}</dd>}
+        html << %{</dl>}
+        html.html_safe
+      end
 
-      expected = '<dl class="field">' +
-                   '<dt><label for="post_title_translations_en">Title</label></dt>' +
-                   '<dd><input id="post_title_translations_en" name="post[title_translations][en]" type="text" /></dd>' +
-                 '</dl>' +
-                 '<dl class="field">' +
-                   '<dt><label for="post_title_translations_pt">Title</label></dt>' +
-                   '<dd><input id="post_title_translations_pt" name="post[title_translations][pt]" type="text" /></dd>' +
-                 '</dl>'
+      expected =  %{<dl class="field">}
+      expected <<  %{<dt><label for="post_title_translations_en">Title</label></dt>}
+      expected <<  %{<dd><input id="post_title_translations_en" name="post[title_translations][en]" type="text" /></dd>}
+      expected << %{</dl>}
+      expected << %{<dl class="field">}
+      expected <<  %{<dt><label for="post_title_translations_pt">Title</label></dt>}
+      expected <<  %{<dd><input id="post_title_translations_pt" name="post[title_translations][pt]" type="text" /></dd>}
+      expected << %{</dl>}
 
       expect(output).to eq(expected)
     end
 
     it 'returns html tags with text_field' do
       output = builder.localized_fields do |localized_field|
-          '<div>'.html_safe + localized_field.text_field(:title).html_safe + '</div>'.html_safe
+          %{<div>#{localized_field.text_field(:title).html_safe}</div>}.html_safe
       end
 
-      expected = '<div><input id="post_title_translations_en" name="post[title_translations][en]" type="text" /></div>' +
-                 '<div><input id="post_title_translations_pt" name="post[title_translations][pt]" type="text" /></div>'
+      expected =  %{<div><input id="post_title_translations_en" name="post[title_translations][en]" type="text" /></div>}
+      expected << %{<div><input id="post_title_translations_pt" name="post[title_translations][pt]" type="text" /></div>}
 
       expect(output).to eq(expected)
     end
 
     it 'returns html tags with text_field for :en' do
       output = builder.localized_fields(:title) do |localized_field|
-          '<div>'.html_safe + localized_field.text_field(:en).html_safe + '</div>'.html_safe
+          %{<div>#{localized_field.text_field(:en).html_safe}</div>}.html_safe
       end
 
-      expected = '<div><input id="post_title_translations_en" name="post[title_translations][en]" type="text" /></div>'
+      expected = %{<div><input id="post_title_translations_en" name="post[title_translations][en]" type="text" /></div>}
 
       expect(output).to eq(expected)
     end
@@ -56,10 +57,10 @@ describe 'LocalizedFields' do
   describe 'language' do
     it 'returns the language' do
       output = builder.localized_fields do |localized_field|
-        "<h2>#{localized_field.language}</h2>".html_safe
+        %{<h2>#{localized_field.language}</h2>}.html_safe
       end
 
-      expected = '<h2>en</h2><h2>pt</h2>'
+      expected = %{<h2>en</h2><h2>pt</h2>}
 
       expect(output).to eq(expected)
     end
@@ -71,7 +72,7 @@ describe 'LocalizedFields' do
         localized_field.label :en
       end
 
-      expected = '<label for="post_title_translations_en">Title</label>'
+      expected = %{<label for="post_title_translations_en">Title</label>}
 
       expect(output).to eq(expected)
     end
@@ -81,7 +82,7 @@ describe 'LocalizedFields' do
         localized_field.label :en, "The title in english"
       end
 
-      expected = '<label for="post_title_translations_en">The title in english</label>'
+      expected = %{<label for="post_title_translations_en">The title in english</label>}
 
       expect(output).to eq(expected)
     end
@@ -91,7 +92,7 @@ describe 'LocalizedFields' do
         localized_field.label :en, "The title in english", class: "field"
       end
 
-      expected = '<label class="field" for="post_title_translations_en">The title in english</label>'
+      expected = %{<label class="field" for="post_title_translations_en">The title in english</label>}
 
       expect(output).to eq(expected)
     end
@@ -101,8 +102,8 @@ describe 'LocalizedFields' do
         localized_field.label :title
       end
 
-      expected = '<label for="post_title_translations_en">Title</label>' +
-                 '<label for="post_title_translations_pt">Title</label>'
+      expected =  %{<label for="post_title_translations_en">Title</label>}
+      expected << %{<label for="post_title_translations_pt">Title</label>}
 
       expect(output).to eq(expected)
     end
@@ -112,8 +113,8 @@ describe 'LocalizedFields' do
         localized_field.label :title, class: 'field'
       end
 
-      expected = '<label class="field" for="post_title_translations_en">Title</label>' +
-                 '<label class="field" for="post_title_translations_pt">Title</label>'
+      expected =  %{<label class="field" for="post_title_translations_en">Title</label>}
+      expected << %{<label class="field" for="post_title_translations_pt">Title</label>}
 
       expect(output).to eq(expected)
     end
@@ -125,7 +126,7 @@ describe 'LocalizedFields' do
         localized_field.text_field :en
       end
 
-      expected = '<input id="post_title_translations_en" name="post[title_translations][en]" type="text" />'
+      expected = %{<input id="post_title_translations_en" name="post[title_translations][en]" type="text" />}
 
       expect(output).to eq(expected)
     end
@@ -135,8 +136,8 @@ describe 'LocalizedFields' do
         localized_field.text_field :title
       end
 
-      expected = '<input id="post_title_translations_en" name="post[title_translations][en]" type="text" />' +
-                 '<input id="post_title_translations_pt" name="post[title_translations][pt]" type="text" />'
+      expected =  %{<input id="post_title_translations_en" name="post[title_translations][en]" type="text" />}
+      expected << %{<input id="post_title_translations_pt" name="post[title_translations][pt]" type="text" />}
 
       expect(output).to eq(expected)
     end
@@ -146,8 +147,8 @@ describe 'LocalizedFields' do
         localized_field.text_field :title, class: 'field'
       end
 
-      expected = '<input class="field" id="post_title_translations_en" name="post[title_translations][en]" type="text" />' +
-                 '<input class="field" id="post_title_translations_pt" name="post[title_translations][pt]" type="text" />'
+      expected =  %{<input class="field" id="post_title_translations_en" name="post[title_translations][en]" type="text" />}
+      expected << %{<input class="field" id="post_title_translations_pt" name="post[title_translations][pt]" type="text" />}
 
       expect(output).to eq(expected)
     end
