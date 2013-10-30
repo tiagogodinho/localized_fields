@@ -1,8 +1,15 @@
+language: ruby
+
 rvm:
   - 1.9.3
   - 2.0.0
 
+services: mongodb
+
 gemfile:
   - Gemfile
-  - gemfiles/mongoid-2.4.gemfile
-  - gemfiles/mongoid-3.0.gemfile
+  - gemfiles/mongoid-master.gemfile
+
+notifications:
+  email:
+    - tiagogodinho3@gmail.com

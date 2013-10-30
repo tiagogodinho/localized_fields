@@ -5,7 +5,7 @@ describe 'LocalizedFields' do
     @post = Post.new
     @template = ActionView::Base.new
     @template.output_buffer = ''
-    @builder = ActionView::Helpers::FormBuilder.new(:post, @post, @template, {}, proc {})
+    @builder = ActionView::Helpers::FormBuilder.new(:post, @post, @template, {})
 
     I18n.available_locales = [:en, :pt]
   end
@@ -21,11 +21,11 @@ describe 'LocalizedFields' do
 
       expected = '<dl class="field">' +
                    '<dt><label for="post_title_translations_en">Title</label></dt>' +
-                   '<dd><input id="post_title_translations_en" name="post[title_translations][en]" size="30" type="text" /></dd>' +
+                   '<dd><input id="post_title_translations_en" name="post[title_translations][en]" type="text" /></dd>' +
                  '</dl>' +
                  '<dl class="field">' +
                    '<dt><label for="post_title_translations_pt">Title</label></dt>' +
-                   '<dd><input id="post_title_translations_pt" name="post[title_translations][pt]" size="30" type="text" /></dd>' +
+                   '<dd><input id="post_title_translations_pt" name="post[title_translations][pt]" type="text" /></dd>' +
                  '</dl>'
 
       output.should eq(expected)
@@ -36,8 +36,8 @@ describe 'LocalizedFields' do
           '<div>'.html_safe + localized_field.text_field(:title).html_safe + '</div>'.html_safe
       end
 
-      expected = '<div><input id="post_title_translations_en" name="post[title_translations][en]" size="30" type="text" /></div>' +
-                 '<div><input id="post_title_translations_pt" name="post[title_translations][pt]" size="30" type="text" /></div>'
+      expected = '<div><input id="post_title_translations_en" name="post[title_translations][en]" type="text" /></div>' +
+                 '<div><input id="post_title_translations_pt" name="post[title_translations][pt]" type="text" /></div>'
 
       output.should eq(expected)
     end
@@ -47,7 +47,7 @@ describe 'LocalizedFields' do
           '<div>'.html_safe + localized_field.text_field(:en).html_safe + '</div>'.html_safe
       end
 
-      expected = '<div><input id="post_title_translations_en" name="post[title_translations][en]" size="30" type="text" /></div>'
+      expected = '<div><input id="post_title_translations_en" name="post[title_translations][en]" type="text" /></div>'
 
       output.should eq(expected)
     end
@@ -125,7 +125,7 @@ describe 'LocalizedFields' do
         localized_field.text_field :en
       end
 
-      expected = '<input id="post_title_translations_en" name="post[title_translations][en]" size="30" type="text" />'
+      expected = '<input id="post_title_translations_en" name="post[title_translations][en]" type="text" />'
 
       output.should eq(expected)
     end
@@ -135,8 +135,8 @@ describe 'LocalizedFields' do
         localized_field.text_field :title
       end
 
-      expected = '<input id="post_title_translations_en" name="post[title_translations][en]" size="30" type="text" />' +
-                 '<input id="post_title_translations_pt" name="post[title_translations][pt]" size="30" type="text" />'
+      expected = '<input id="post_title_translations_en" name="post[title_translations][en]" type="text" />' +
+                 '<input id="post_title_translations_pt" name="post[title_translations][pt]" type="text" />'
 
       output.should eq(expected)
     end
@@ -146,8 +146,8 @@ describe 'LocalizedFields' do
         localized_field.text_field :title, class: 'field'
       end
 
-      expected = '<input class="field" id="post_title_translations_en" name="post[title_translations][en]" size="30" type="text" />' +
-                 '<input class="field" id="post_title_translations_pt" name="post[title_translations][pt]" size="30" type="text" />'
+      expected = '<input class="field" id="post_title_translations_en" name="post[title_translations][en]" type="text" />' +
+                 '<input class="field" id="post_title_translations_pt" name="post[title_translations][pt]" type="text" />'
 
       output.should eq(expected)
     end
@@ -159,7 +159,7 @@ describe 'LocalizedFields' do
         localized_field.text_area :en, value: 'text'
       end
 
-      expected =  %{<textarea cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20">\n}
+      expected =  %{<textarea id="post_title_translations_en" name="post[title_translations][en]">\n}
       expected << %{</textarea>}
 
       output.should eq(expected)
@@ -170,9 +170,9 @@ describe 'LocalizedFields' do
         localized_field.text_area :title
       end
 
-      expected =  %{<textarea cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20">\n}
+      expected =  %{<textarea id="post_title_translations_en" name="post[title_translations][en]">\n}
       expected << %{</textarea>}
-      expected << %{<textarea cols="40" id="post_title_translations_pt" name="post[title_translations][pt]" rows="20">\n}
+      expected << %{<textarea id="post_title_translations_pt" name="post[title_translations][pt]">\n}
       expected << %{</textarea>}
 
       output.should eq(expected)
@@ -183,9 +183,9 @@ describe 'LocalizedFields' do
         localized_field.text_area :title, class: 'field'
       end
 
-      expected =  %{<textarea class="field" cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20">\n}
+      expected =  %{<textarea class="field" id="post_title_translations_en" name="post[title_translations][en]">\n}
       expected << %{</textarea>}
-      expected << %{<textarea class="field" cols="40" id="post_title_translations_pt" name="post[title_translations][pt]" rows="20">\n}
+      expected << %{<textarea class="field" id="post_title_translations_pt" name="post[title_translations][pt]">\n}
       expected << %{</textarea>}
 
       output.should eq(expected)
@@ -197,7 +197,7 @@ describe 'LocalizedFields' do
         @post.stub(:title_translations).and_return({ 'en' => 'title en', 'pt' => 'title pt' })
         @template = ActionView::Base.new
         @template.output_buffer = ''
-        @builder = ActionView::Helpers::FormBuilder.new(:post, @post, @template, {}, proc {})
+        @builder = ActionView::Helpers::FormBuilder.new(:post, @post, @template, {})
       end
 
       it 'should return a text_area tag for en' do
@@ -205,7 +205,7 @@ describe 'LocalizedFields' do
           localized_field.text_area :en
         end
 
-        expected =  %{<textarea cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20">\ntitle en}
+        expected =  %{<textarea id="post_title_translations_en" name="post[title_translations][en]">\ntitle en}
         expected << %{</textarea>}
 
         output.should eq(expected)
@@ -216,9 +216,9 @@ describe 'LocalizedFields' do
           localized_field.text_area :title
         end
 
-        expected =  %{<textarea cols="40" id="post_title_translations_en" name="post[title_translations][en]" rows="20">\ntitle en}
+        expected =  %{<textarea id="post_title_translations_en" name="post[title_translations][en]">\ntitle en}
         expected << %{</textarea>}
-        expected << %{<textarea cols="40" id="post_title_translations_pt" name="post[title_translations][pt]" rows="20">\ntitle pt}
+        expected << %{<textarea id="post_title_translations_pt" name="post[title_translations][pt]">\ntitle pt}
         expected << %{</textarea>}
 
         output.should eq(expected)
