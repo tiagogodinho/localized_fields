@@ -73,12 +73,12 @@ end
 
 ## Dependencies
 
-- rails >= 3.1
-- mongoid >= 2.4
+- actionpack ~> 4.0.0
+- mongoid (master)
 
 ## Compatibility
 
-Localized Fields is tested against Ruby 1.9.3.
+Localized Fields is tested against Ruby 1.9.3 and 2.0.0
 
 ## Contributing
 
