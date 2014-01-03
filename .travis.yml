@@ -7,6 +7,8 @@ rvm:
 
 services: mongodb
 
+before_install: gem install bundler --pre
+
 gemfile:
   - Gemfile
   - gemfiles/mongoid-master.gemfile
