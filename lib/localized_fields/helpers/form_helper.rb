@@ -11,7 +11,7 @@ module LocalizedFields
         else
           output = ''
 
-          I18n.available_locales.each do |language|
+          LocalizedFields.configuration.used_locales.each do |language|
             output << @template.fields_for(object_name, @object, options.merge(builder: LocalizedFields::FormBuilder, language: language), &block)
           end
 
