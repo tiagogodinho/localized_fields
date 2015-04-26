@@ -38,12 +38,12 @@ module LocalizedFields
 
         value = translations.has_key?(language.to_s) ? translations[language.to_s] : nil
 
-        options = options.merge(value: value, id: "#{object_name}_#{attribute}_translations_#{language}", name: "#{object_name}[#{attribute}_translations][#{language}]")
+        options = options.merge(id: "#{object_name}_#{attribute}_translations_#{language}", name: "#{object_name}[#{attribute}_translations][#{language}]")
       else
         value = @object ? @object[attribute.to_s] : nil
-
-        options = options.merge(value: value)
       end
+
+      options[:value] ||= value || ''
 
       return attribute, options
     end
