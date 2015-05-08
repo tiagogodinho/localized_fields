@@ -1,7 +1,0 @@
-source 'https://rubygems.org'
-
-gem 'mongoid', github: 'mongoid/mongoid'
-
-gem 'coveralls', require: false
-
-gemspec path: '../'

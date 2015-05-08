@@ -3,16 +3,25 @@ language: ruby
 rvm:
   - 1.9.3
   - 2.0.0
-  - 2.1.0
-
-services: mongodb
+  - 2.1.6
+  - 2.2.2
 
 before_install: gem install bundler --pre
 
 gemfile:
-  - Gemfile
-  - gemfiles/mongoid-master.gemfile
+  - spec/gemfiles/Gemfile.master
+  - spec/gemfiles/Gemfile.rails32
+  - spec/gemfiles/Gemfile.rails40
+  - spec/gemfiles/Gemfile.rails41
+  - spec/gemfiles/Gemfile.rails42
 
 notifications:
   email:
     - tiagogodinho3@gmail.com
+
+matrix:
+  exclude:
+    - rvm: 2.2.2
+      gemfile: spec/gemfiles/Gemfile.rails32
+  allow_failures:
+    - gemfile: spec/gemfiles/Gemfile.rails32

@@ -3,6 +3,7 @@
 ### Improvements
 
 * Added ability to specify the label text. ([@xavier][]) commit: [7222f15][]
+* Fix Travis CI for Rails 4. ([@johnnyshields][])
 
 ## 0.2.0 - June 15, 2012
 

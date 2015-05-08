@@ -1,0 +1,8 @@
+source 'http://rubygems.org'
+
+gemspec path: '../../'
+
+gem 'actionpack', '~> 4.2'
+gem 'mongoid',    github: 'mongoid'
+
+gem 'coveralls', require: false

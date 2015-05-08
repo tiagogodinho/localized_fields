@@ -3,7 +3,12 @@ require 'spec_helper'
 describe 'LocalizedFields' do
   let(:post) { Post.new }
   let(:template) { ActionView::Base.new }
-  let(:builder) { ActionView::Helpers::FormBuilder.new(:post, post, template, {}) }
+  let(:builder) { ActionView::Helpers::FormBuilder.new(*builder_args) }
+  let(:builder_args) do
+    args =  [:post, post, template, {}]
+    args += [proc {}] if rails3?
+    args
+  end
 
   before do
     template.output_buffer = ''
@@ -48,7 +53,7 @@ describe 'LocalizedFields' do
           %{<div>#{localized_field.text_field(:en).html_safe}</div>}.html_safe
       end
 
-      expected = %{<div><input id="post_title_translations_en" name="post[title_translations][en]" type="text" /></div>}
+      expected = %{<div><input type="text" name="post[title_translations][en]" id="post_title_translations_en" /></div>}
 
       expect(output).to eq(expected)
     end
@@ -126,7 +131,7 @@ describe 'LocalizedFields' do
         localized_field.text_field :en
       end
 
-      expected = %{<input id="post_title_translations_en" name="post[title_translations][en]" type="text" />}
+      expected = %{<input type="text" name="post[title_translations][en]" id="post_title_translations_en" />}
 
       expect(output).to eq(expected)
     end
@@ -160,7 +165,7 @@ describe 'LocalizedFields' do
         localized_field.text_area :en, value: 'text'
       end
 
-      expected =  %{<textarea id="post_title_translations_en" name="post[title_translations][en]">\n}
+      expected =  %{<textarea name="post[title_translations][en]" id="post_title_translations_en">\n}
       expected << %{</textarea>}
 
       expect(output).to eq(expected)
@@ -202,7 +207,7 @@ describe 'LocalizedFields' do
           localized_field.text_area :en
         end
 
-        expected =  %{<textarea id="post_title_translations_en" name="post[title_translations][en]">\ntitle en}
+        expected =  %{<textarea name="post[title_translations][en]" id="post_title_translations_en">\ntitle en}
         expected << %{</textarea>}
 
         expect(output).to eq(expected)
